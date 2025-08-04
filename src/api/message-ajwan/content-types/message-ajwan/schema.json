@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "message_ajwans",
+  "info": {
+    "singularName": "message-ajwan",
+    "pluralName": "message-ajwans",
+    "displayName": "MessageAjwan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nameUser": {
+      "type": "string",
+      "required": true
+    },
+    "emailUser": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

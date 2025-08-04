@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_ajwans",
+  "info": {
+    "singularName": "product-ajwan",
+    "pluralName": "product-ajwans",
+    "displayName": "productAjwan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "productName": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "productDescription": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "minLength": 3,
+      "maxLength": 20,
+      "required": true
+    },
+    "productImages": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "productVideo": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "service_ajwains": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service-ajwain.service-ajwain",
+      "inversedBy": "product_ajwans"
+    }
+  }
+}

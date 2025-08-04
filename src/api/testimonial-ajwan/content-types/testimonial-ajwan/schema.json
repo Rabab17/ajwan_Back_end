@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "testimonial_ajwans",
+  "info": {
+    "singularName": "testimonial-ajwan",
+    "pluralName": "testimonial-ajwans",
+    "displayName": "testimonialAjwan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nameUser": {
+      "type": "text",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "img": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

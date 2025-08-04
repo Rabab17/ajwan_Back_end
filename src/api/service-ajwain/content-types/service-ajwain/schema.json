@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_ajwains",
+  "info": {
+    "singularName": "service-ajwain",
+    "pluralName": "service-ajwains",
+    "displayName": "ServiceAjwain"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "serviceDescription": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "ServiceTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "minLength": 3,
+      "maxLength": 15,
+      "required": true
+    },
+    "ServiceImages": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ServiceIcon": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "product_ajwans": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-ajwan.product-ajwan",
+      "mappedBy": "service_ajwains"
+    }
+  }
+}
