@@ -71,6 +71,14 @@
       "relation": "manyToMany",
       "target": "api::service-ajwain.service-ajwain",
       "inversedBy": "product_ajwans"
+    },
+    "Availability": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_items",
+  "info": {
+    "singularName": "service-item",
+    "pluralName": "service-items",
+    "displayName": "Service Item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "imgItems": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "service_ajwain": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-ajwain.service-ajwain",
+      "inversedBy": "service_items"
+    }
+  }
+}

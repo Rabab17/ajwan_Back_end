@@ -11,17 +11,20 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nameUser": {
+    "Full_Name": {
       "type": "string",
       "required": true
     },
-    "emailUser": {
+    "Email_Address": {
       "type": "string",
       "required": true
     },
-    "message": {
-      "type": "string",
+    "Project_Details": {
+      "type": "text",
       "required": true
+    },
+    "Phone_Number": {
+      "type": "string"
     }
   }
 }

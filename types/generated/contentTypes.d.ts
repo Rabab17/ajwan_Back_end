@@ -439,82 +439,6 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiAdminDashordAjwainAdminDashordAjwain
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'admin_dashord_ajwains';
-  info: {
-    displayName: 'UserAjwan';
-    pluralName: 'admin-dashord-ajwains';
-    singularName: 'admin-dashord-ajwain';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::admin-dashord-ajwain.admin-dashord-ajwain'
-    >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    password: Schema.Attribute.Password &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 37;
-        minLength: 5;
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    resetPasswordExpires: Schema.Attribute.DateTime &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    resetPasswordToken: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    role: Schema.Attribute.Enumeration<['admin', 'client']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -562,15 +486,16 @@ export interface ApiMessageAjwanMessageAjwan
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    emailUser: Schema.Attribute.String & Schema.Attribute.Required;
+    Email_Address: Schema.Attribute.String & Schema.Attribute.Required;
+    Full_Name: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::message-ajwan.message-ajwan'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.String & Schema.Attribute.Required;
-    nameUser: Schema.Attribute.String & Schema.Attribute.Required;
+    Phone_Number: Schema.Attribute.String;
+    Project_Details: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -595,6 +520,12 @@ export interface ApiProductAjwanProductAjwan
     };
   };
   attributes: {
+    Availability: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -681,6 +612,10 @@ export interface ApiServiceAjwainServiceAjwain
       'api::product-ajwan.product-ajwan'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    service_items: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service-item.service-item'
+    >;
     serviceDescription: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -725,6 +660,96 @@ export interface ApiServiceAjwainServiceAjwain
   };
 }
 
+export interface ApiServiceItemServiceItem extends Struct.CollectionTypeSchema {
+  collectionName: 'service_items';
+  info: {
+    displayName: 'Service Item';
+    pluralName: 'service-items';
+    singularName: 'service-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    imgItems: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service-item.service-item'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    service_ajwain: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::service-ajwain.service-ajwain'
+    >;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTestTest extends Struct.CollectionTypeSchema {
+  collectionName: 'tests';
+  info: {
+    displayName: 'test';
+    pluralName: 'tests';
+    singularName: 'test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::test.test'>;
+    name: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTestimonialAjwanTestimonialAjwan
   extends Struct.CollectionTypeSchema {
   collectionName: 'testimonial_ajwans';
@@ -737,6 +762,7 @@ export interface ApiTestimonialAjwanTestimonialAjwan
     draftAndPublish: true;
   };
   attributes: {
+    CompanyName: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -750,6 +776,7 @@ export interface ApiTestimonialAjwanTestimonialAjwan
     message: Schema.Attribute.String & Schema.Attribute.Required;
     nameUser: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    Rating: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -843,6 +870,103 @@ export interface PluginContentReleasesReleaseAction
     >;
     type: Schema.Attribute.Enumeration<['publish', 'unpublish']> &
       Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface PluginEmailDesignerV5EmailDesignerTemplate
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'email-designer-templates';
+  info: {
+    description: 'This collection stores email templates created with the email designer.';
+    displayName: 'Email Designer Templates';
+    pluralName: 'email-designer-templates';
+    singularName: 'email-designer-template';
+  };
+  options: {
+    draftAndPublish: false;
+    timestamps: true;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    bodyHtml: Schema.Attribute.Text;
+    bodyText: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    design: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::email-designer-v5.email-designer-template'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    subject: Schema.Attribute.String;
+    tags: Schema.Attribute.JSON;
+    templateReferenceId: Schema.Attribute.Integer & Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    versions: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::email-designer-v5.email-designer-template-version'
+    >;
+  };
+}
+
+export interface PluginEmailDesignerV5EmailDesignerTemplateVersion
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'email-designer-template-versions';
+  info: {
+    description: 'This collection keeps track of the changes made to the different templates.';
+    displayName: 'Email Designer Template Versions';
+    pluralName: 'email-designer-template-versions';
+    singularName: 'email-designer-template-version';
+  };
+  options: {
+    draftAndPublish: false;
+    timestamps: true;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: true;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    bodyHtml: Schema.Attribute.Text;
+    bodyText: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    design: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::email-designer-v5.email-designer-template-version'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    subject: Schema.Attribute.String;
+    tags: Schema.Attribute.JSON;
+    templateId: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::email-designer-v5.email-designer-template'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1267,14 +1391,17 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
-      'api::admin-dashord-ajwain.admin-dashord-ajwain': ApiAdminDashordAjwainAdminDashordAjwain;
       'api::global.global': ApiGlobalGlobal;
       'api::message-ajwan.message-ajwan': ApiMessageAjwanMessageAjwan;
       'api::product-ajwan.product-ajwan': ApiProductAjwanProductAjwan;
       'api::service-ajwain.service-ajwain': ApiServiceAjwainServiceAjwain;
+      'api::service-item.service-item': ApiServiceItemServiceItem;
+      'api::test.test': ApiTestTest;
       'api::testimonial-ajwan.testimonial-ajwan': ApiTestimonialAjwanTestimonialAjwan;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::email-designer-v5.email-designer-template': PluginEmailDesignerV5EmailDesignerTemplate;
+      'plugin::email-designer-v5.email-designer-template-version': PluginEmailDesignerV5EmailDesignerTemplateVersion;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::review-workflows.workflow': PluginReviewWorkflowsWorkflow;
       'plugin::review-workflows.workflow-stage': PluginReviewWorkflowsWorkflowStage;

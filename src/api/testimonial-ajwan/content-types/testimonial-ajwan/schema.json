@@ -28,6 +28,12 @@
         "videos",
         "audios"
       ]
+    },
+    "Rating": {
+      "type": "decimal"
+    },
+    "CompanyName": {
+      "type": "string"
     }
   }
 }

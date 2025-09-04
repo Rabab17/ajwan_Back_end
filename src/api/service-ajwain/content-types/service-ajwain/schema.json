@@ -72,6 +72,12 @@
       "relation": "manyToMany",
       "target": "api::product-ajwan.product-ajwan",
       "mappedBy": "service_ajwains"
+    },
+    "service_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-item.service-item",
+      "mappedBy": "service_ajwain"
     }
   }
 }
