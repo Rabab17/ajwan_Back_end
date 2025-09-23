@@ -497,6 +497,8 @@ export interface ApiMessageAjwanMessageAjwan
     Phone_Number: Schema.Attribute.String;
     Project_Details: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    Reply: Schema.Attribute.Text;
+    statusMessage: Schema.Attribute.Enumeration<['pending', 'replied']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -540,10 +542,6 @@ export interface ApiProductAjwanProductAjwan
         i18n: {
           localized: true;
         };
-      }> &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 20;
-        minLength: 3;
       }>;
     productImages: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -555,17 +553,8 @@ export interface ApiProductAjwanProductAjwan
           localized: true;
         };
       }>;
-    productName: Schema.Attribute.String &
+    productName: Schema.Attribute.Text &
       Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    productVideo: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -579,6 +568,12 @@ export interface ApiProductAjwanProductAjwan
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    videoUrl: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -643,20 +638,22 @@ export interface ApiServiceAjwainServiceAjwain
           localized: true;
         };
       }>;
-    ServiceTitle: Schema.Attribute.String &
+    ServiceTitle: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }> &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 15;
-        minLength: 3;
       }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    videoUrl: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -704,7 +701,7 @@ export interface ApiServiceItemServiceItem extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::service-ajwain.service-ajwain'
     >;
-    title: Schema.Attribute.String &
+    title: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -713,6 +710,12 @@ export interface ApiServiceItemServiceItem extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    videoUrl: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -762,7 +765,7 @@ export interface ApiTestimonialAjwanTestimonialAjwan
     draftAndPublish: true;
   };
   attributes: {
-    CompanyName: Schema.Attribute.String;
+    CompanyName: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -773,7 +776,7 @@ export interface ApiTestimonialAjwanTestimonialAjwan
       'api::testimonial-ajwan.testimonial-ajwan'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.String & Schema.Attribute.Required;
+    message: Schema.Attribute.Text & Schema.Attribute.Required;
     nameUser: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     Rating: Schema.Attribute.Decimal;

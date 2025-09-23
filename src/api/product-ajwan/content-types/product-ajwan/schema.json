@@ -16,7 +16,7 @@
   },
   "attributes": {
     "productName": {
-      "type": "string",
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -31,8 +31,6 @@
           "localized": true
         }
       },
-      "minLength": 3,
-      "maxLength": 20,
       "required": true
     },
     "productImages": {
@@ -51,21 +49,6 @@
         "audios"
       ]
     },
-    "productVideo": {
-      "type": "media",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "service_ajwains": {
       "type": "relation",
       "relation": "manyToMany",
@@ -74,6 +57,14 @@
     },
     "Availability": {
       "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "videoUrl": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true

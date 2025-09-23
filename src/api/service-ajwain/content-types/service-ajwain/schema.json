@@ -25,14 +25,12 @@
       "required": true
     },
     "ServiceTitle": {
-      "type": "string",
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "minLength": 3,
-      "maxLength": 15,
       "required": true
     },
     "ServiceImages": {
@@ -78,6 +76,14 @@
       "relation": "oneToMany",
       "target": "api::service-item.service-item",
       "mappedBy": "service_ajwain"
+    },
+    "videoUrl": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

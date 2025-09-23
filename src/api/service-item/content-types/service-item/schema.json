@@ -16,7 +16,7 @@
   },
   "attributes": {
     "title": {
-      "type": "string",
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -51,6 +51,14 @@
       "relation": "manyToOne",
       "target": "api::service-ajwain.service-ajwain",
       "inversedBy": "service_items"
+    },
+    "videoUrl": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

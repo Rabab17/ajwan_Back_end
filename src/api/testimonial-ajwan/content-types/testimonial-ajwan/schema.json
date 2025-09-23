@@ -16,7 +16,7 @@
       "required": true
     },
     "message": {
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "img": {
@@ -33,7 +33,7 @@
       "type": "decimal"
     },
     "CompanyName": {
-      "type": "string"
+      "type": "text"
     }
   }
 }

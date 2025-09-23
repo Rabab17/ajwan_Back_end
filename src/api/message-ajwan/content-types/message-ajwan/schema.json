@@ -25,6 +25,16 @@
     },
     "Phone_Number": {
       "type": "string"
+    },
+    "Reply": {
+      "type": "text"
+    },
+    "statusMessage": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "replied"
+      ]
     }
   }
 }
