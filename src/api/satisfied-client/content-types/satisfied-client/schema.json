@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "satisfied_clients",
+  "info": {
+    "singularName": "satisfied-client",
+    "pluralName": "satisfied-clients",
+    "displayName": "satisfiedClient"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "satisfiedClients": {
+      "type": "integer"
+    }
+  }
+}

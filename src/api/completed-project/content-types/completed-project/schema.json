@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "completed_projects",
+  "info": {
+    "singularName": "completed-project",
+    "pluralName": "completed-projects",
+    "displayName": "completedProject"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "completedProject": {
+      "type": "integer"
+    }
+  }
+}

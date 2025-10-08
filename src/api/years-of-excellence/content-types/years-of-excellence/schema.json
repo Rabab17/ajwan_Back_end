@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "years_of_excellences",
+  "info": {
+    "singularName": "years-of-excellence",
+    "pluralName": "years-of-excellences",
+    "displayName": "yearsOfExcellence"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "years": {
+      "type": "integer"
+    }
+  }
+}

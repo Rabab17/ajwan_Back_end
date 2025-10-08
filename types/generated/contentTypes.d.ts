@@ -439,6 +439,35 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiCompletedProjectCompletedProject
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'completed_projects';
+  info: {
+    displayName: 'completedProject';
+    pluralName: 'completed-projects';
+    singularName: 'completed-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    completedProject: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::completed-project.completed-project'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -574,6 +603,35 @@ export interface ApiProductAjwanProductAjwan
           localized: true;
         };
       }>;
+  };
+}
+
+export interface ApiSatisfiedClientSatisfiedClient
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'satisfied_clients';
+  info: {
+    displayName: 'satisfiedClient';
+    pluralName: 'satisfied-clients';
+    singularName: 'satisfied-client';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::satisfied-client.satisfied-client'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    satisfiedClients: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -783,6 +841,35 @@ export interface ApiTestimonialAjwanTestimonialAjwan
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiYearsOfExcellenceYearsOfExcellence
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'years_of_excellences';
+  info: {
+    displayName: 'yearsOfExcellence';
+    pluralName: 'years-of-excellences';
+    singularName: 'years-of-excellence';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::years-of-excellence.years-of-excellence'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    years: Schema.Attribute.Integer;
   };
 }
 
@@ -1394,13 +1481,16 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::completed-project.completed-project': ApiCompletedProjectCompletedProject;
       'api::global.global': ApiGlobalGlobal;
       'api::message-ajwan.message-ajwan': ApiMessageAjwanMessageAjwan;
       'api::product-ajwan.product-ajwan': ApiProductAjwanProductAjwan;
+      'api::satisfied-client.satisfied-client': ApiSatisfiedClientSatisfiedClient;
       'api::service-ajwain.service-ajwain': ApiServiceAjwainServiceAjwain;
       'api::service-item.service-item': ApiServiceItemServiceItem;
       'api::test.test': ApiTestTest;
       'api::testimonial-ajwan.testimonial-ajwan': ApiTestimonialAjwanTestimonialAjwan;
+      'api::years-of-excellence.years-of-excellence': ApiYearsOfExcellenceYearsOfExcellence;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::email-designer-v5.email-designer-template': PluginEmailDesignerV5EmailDesignerTemplate;
